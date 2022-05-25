@@ -2,28 +2,19 @@ import { Zecko } from 'zecko-js';
 
 class CollectionClientExample {
   get = (id) => {
-    const zecko = new Zecko({
-      accessToken: process.env.ZECKO_ACCESS_TOKEN || 'abc',
-    });
-
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.collectionClient.get(id);
   };
 
   getAll = () => {
-    const zecko = new Zecko({
-      accessToken: process.env.ZECKO_ACCESS_TOKEN || 'abc',
-    });
-
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.collectionClient.getAll();
   };
 }
 
+const collectionClientExample = new CollectionClientExample();
 console.log(
-  await new CollectionClientExample().get(
-    process.env.COLLECTION_ID || '391817560310'
-  )
+  JSON.stringify(await collectionClientExample.get('YOUR_COLLECTION_ID'))
 );
-
-const allCollections = await new CollectionClientExample().getAll();
-
-console.log(JSON.stringify(allCollections));
+console.log('\n');
+console.log(JSON.stringify(await collectionClientExample.getAll()));
