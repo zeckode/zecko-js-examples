@@ -1,4 +1,4 @@
-import { Zecko } from 'zecko-js';
+import { Zecko } from 'zecko';
 
 class CollectionClientExample {
   get = (id) => {
@@ -13,8 +13,8 @@ class CollectionClientExample {
 }
 
 const collectionClientExample = new CollectionClientExample();
+console.log(JSON.stringify(await collectionClientExample.getAll()));
+console.log('\n');
 console.log(
   JSON.stringify(await collectionClientExample.get('YOUR_COLLECTION_ID'))
 );
-console.log('\n');
-console.log(JSON.stringify(await collectionClientExample.getAll()));
