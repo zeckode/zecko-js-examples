@@ -52,4 +52,8 @@ console.log(
 
 console.log('\n');
 
-console.log(JSON.stringify(await cartClientExample.delete('5')));
+console.log(
+  JSON.stringify(
+    await cartClientExample.delete('5')
+  )
+);

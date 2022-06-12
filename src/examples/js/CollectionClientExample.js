@@ -1,9 +1,9 @@
 import { Zecko } from 'zecko';
 
 class CollectionClientExample {
-  get = (id) => {
+  getbyId = (id) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.collectionClient.get(id);
+    return zecko.collectionClient.getbyId(id);
   };
 
   getAll = () => {
@@ -16,5 +16,5 @@ const collectionClientExample = new CollectionClientExample();
 console.log(JSON.stringify(await collectionClientExample.getAll()));
 console.log('\n');
 console.log(
-  JSON.stringify(await collectionClientExample.get('YOUR_COLLECTION_ID'))
+  JSON.stringify(await collectionClientExample.getbyId('YOUR_COLLECTION_ID'))
 );
