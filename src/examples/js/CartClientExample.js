@@ -2,22 +2,22 @@ import { Zecko } from 'zecko';
 
 class CartClientExample {
   getByClientCustomerId = (customerId, lineItemsAfter = null) => {
-    const zecko = new Zecko({ accessToken: 'abc' });
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.getByClientCustomerId(customerId, lineItemsAfter);
   };
 
   addToCart = (cartActionRequest) => {
-    const zecko = new Zecko({ accessToken: 'abc' });
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.addToCart(cartActionRequest);
   };
 
   deleteFromCart = (cartActionRequest) => {
-    const zecko = new Zecko({ accessToken: 'abc' });
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
   delete = (customerId) => {
-    const zecko = new Zecko({ accessToken: 'abc' });
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.delete(customerId);
   };
 }
@@ -31,9 +31,9 @@ console.log('\n');
 console.log(
   JSON.stringify(
     await cartClientExample.addToCart({
-      customerId: '5',
-      variantId: '40607273746483',
-      quantity: 1,
+      customerId: 'YOUR_CLIENT_CUSTOMER_ID',
+      variantId: 'YOUR_VARIANT_ID',
+      quantity: 'YOUR_QUANTITY',
     })
   )
 );
@@ -43,17 +43,13 @@ console.log('\n');
 console.log(
   JSON.stringify(
     await cartClientExample.deleteFromCart({
-      customerId: '5',
-      variantId: '40607273746483',
-      quantity: 1,
+      customerId: 'YOUR_CLIENT_CUSTOMER_ID',
+      variantId: 'YOUR_VARIANT_ID',
+      quantity: 'YOUR_QUANTITY',
     })
   )
 );
 
 console.log('\n');
 
-console.log(
-  JSON.stringify(
-    await cartClientExample.delete('5')
-  )
-);
+console.log(JSON.stringify(await cartClientExample.delete('YOUR_CLIENT_CUSTOMER_ID')));
