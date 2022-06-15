@@ -6,9 +6,9 @@ class CollectionClientExample {
     return zecko.collectionClient.getbyId(id);
   };
 
-  getAll = () => {
+  getAll = (before = null, after = null) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.collectionClient.getAll();
+    return zecko.collectionClient.getAll(before, after);
   };
 }
 
