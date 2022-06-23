@@ -1,14 +1,30 @@
-import { Zecko } from 'zecko-js';
+import { Zecko } from 'zecko';
 
 class ProductClientExample {
-  getAllByCollectionId = (collectionId, after = null) => {
+  getAllByCollectionId = (collectionId, before = null, after = null) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.productClient.getAllByCollectionId(collectionId, after);
+    return zecko.productClient.getAllByCollectionId(
+      collectionId,
+      before,
+      after
+    );
   };
 
-  getById = (id, imagesAfter = null, variantsAfter = null) => {
+  getById = (
+    id,
+    imagesBefore = null,
+    imagesAfter = null,
+    variantsBefore = null,
+    variantsAfter = null
+  ) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.productClient.getById(id, imagesAfter, variantsAfter);
+    return zecko.productClient.getById(
+      id,
+      imagesBefore,
+      imagesAfter,
+      variantsBefore,
+      variantsAfter
+    );
   };
 }
 
@@ -21,11 +37,5 @@ console.log(
 );
 console.log('\n');
 console.log(
-  JSON.stringify(
-    await productClientExample.getById(
-      'YOUR_PRODUCT_ID',
-      'YOUR_IMAGE_CURSOR',
-      'YOUR_VARIANT_CURSOR'
-    )
-  )
+  JSON.stringify(await productClientExample.getById('YOUR_PRODUCT_ID'))
 );

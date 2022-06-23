@@ -1,23 +1,20 @@
-import { Zecko } from 'zecko-js';
+import { Zecko } from 'zecko';
 
 class CollectionClientExample {
-  getbyId = (id) => {
+  getById = (id) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.collectionClient.getbyId(id);
+    return zecko.collectionClient.getById(id);
   };
 
-  getAll = (after = null) => {
+  getAll = (before = null, after = null) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.collectionClient.getAll(after);
+    return zecko.collectionClient.getAll(before, after);
   };
 }
 
 const collectionClientExample = new CollectionClientExample();
-
-console.log(
-  JSON.stringify(await collectionClientExample.getbyId('YOUR_COLLECTION_ID'))
-);
+console.log(JSON.stringify(await collectionClientExample.getAll()));
 console.log('\n');
 console.log(
-  JSON.stringify(await collectionClientExample.getAll('COLLECTION_CURSOR'))
+  JSON.stringify(await collectionClientExample.getById('YOUR_COLLECTION_ID'))
 );

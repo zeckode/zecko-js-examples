@@ -105,6 +105,6 @@
     ]
   },
   "dependencies": {
-    "zecko-js": "^0.0.1-dev.0"
+    "zecko": "^0.0.1"
   }
 }
