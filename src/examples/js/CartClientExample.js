@@ -16,9 +16,9 @@ class CartClientExample {
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
-  complete = (id, cartCompleteRequest) => {
+  completeOrderById = (id, cartCompleteRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.complete(id, cartCompleteRequest);
+    return zecko.cartClient.completeOrderById(id, cartCompleteRequest);
   };
 
   delete = (customerId) => {
@@ -61,7 +61,7 @@ console.log('\n');
 
 console.log(
   JSON.stringify(
-    await cartClientExample.complete('YOUR_ORDER_ID', {
+    await cartClientExample.completeOrderById('YOUR_CART_ID', {
       paymentMethod: 'YOUR_PAYMENT_METHOD',
     })
   )
