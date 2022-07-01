@@ -29,9 +29,9 @@ class CartClientExample {
     return zecko.cartClient.completeCartById(id, cartCompleteRequest);
   };
 
-  deleteByCustomerId = (customerId) => {
+  deleteCartByCustomerId = (customerId) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.deleteByCustomerId(customerId);
+    return zecko.cartClient.deleteCartByCustomerId(customerId);
   };
 }
 
@@ -79,5 +79,7 @@ console.log(
 console.log('\n');
 
 console.log(
-  JSON.stringify(await cartClientExample.deleteByCustomerId('YOUR_CUSTOMER_ID'))
+  JSON.stringify(
+    await cartClientExample.deleteCartByCustomerId('YOUR_CUSTOMER_ID')
+  )
 );
