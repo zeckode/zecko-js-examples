@@ -1,9 +1,17 @@
 import { Zecko } from 'zecko';
 
 class CartClientExample {
-  getByCustomerId = (customerId, lineItemsAfter = null) => {
+  getByCustomerId = (
+    customerId,
+    lineItemsBefore = null,
+    lineItemsAfter = null
+  ) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.getByCustomerId(customerId, lineItemsAfter);
+    return zecko.cartClient.getByCustomerId(
+      customerId,
+      lineItemsBefore,
+      lineItemsAfter
+    );
   };
 
   addToCart = (cartActionRequest) => {
@@ -16,9 +24,14 @@ class CartClientExample {
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
-  delete = (customerId) => {
+  completeCartById = (id, cartCompleteRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.delete(customerId);
+    return zecko.cartClient.completeCartById(id, cartCompleteRequest);
+  };
+
+  deleteCartByCustomerId = (customerId) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.deleteCartByCustomerId(customerId);
   };
 }
 
@@ -54,4 +67,19 @@ console.log(
 
 console.log('\n');
 
-console.log(JSON.stringify(await cartClientExample.delete('YOUR_CUSTOMER_ID')));
+console.log(
+  JSON.stringify(
+    await cartClientExample.completeCartById('YOUR_CART_ID', {
+      // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
+      paymentMethod: 'YOUR_PAYMENT_METHOD',
+    })
+  )
+);
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.deleteCartByCustomerId('YOUR_CUSTOMER_ID')
+  )
+);
