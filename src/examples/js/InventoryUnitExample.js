@@ -30,4 +30,4 @@ console.log(await inventoryUnitClient.exchangeById('YOUR_INVENTORY_UNIT_ID'));
 
 console.log(await inventoryUnitClient.returnById('YOUR_INVENTORY_UNIT_ID'));
 
-console.log(await inventoryUnitClient.returnById('YOUR_INVENTORY_UNIT_ID'));
+console.log(await inventoryUnitClient.trackById('YOUR_INVENTORY_UNIT_ID'));
