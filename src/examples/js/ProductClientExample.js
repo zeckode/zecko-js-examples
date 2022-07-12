@@ -15,7 +15,9 @@ class ProductClientExample {
     imagesBefore = null,
     imagesAfter = null,
     variantsBefore = null,
-    variantsAfter = null
+    variantsAfter = null,
+    metaFieldsBefore = null,
+    metaFieldsAfter = null
   ) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.productClient.getById(
@@ -23,7 +25,9 @@ class ProductClientExample {
       imagesBefore,
       imagesAfter,
       variantsBefore,
-      variantsAfter
+      variantsAfter,
+      metaFieldsBefore,
+      metaFieldsAfter
     );
   };
 }
