@@ -69,9 +69,18 @@ console.log('\n');
 
 console.log(
   JSON.stringify(
-    await cartClientExample.completeCartById('YOUR_CART_ID', {
+    await cartClientExample.completeCartById('891959967795', {
       // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
       paymentMethod: 'YOUR_PAYMENT_METHOD',
+      discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
+      shippingAddress: {
+        address1: "YOUR_CUSTOMER_ADDRESS",
+        city: "YOUR_CUSTOMER_CITY",
+        firstName: "YOUR_CUSTOMER_FIRST_NAME",
+        lastName: "YOUR_CUSTOMER_LAST_NAME",
+        phone: "YOUR_CUSTOMER_PHONE_NUMBER",
+        zip: "YOUR_CUSTOMER_ZIP_CODE",
+      }
     })
   )
 );
