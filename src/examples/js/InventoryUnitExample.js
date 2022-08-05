@@ -39,7 +39,7 @@ const inventoryUnitClient = new InventoryUnitExample();
 console.log(
   JSON.stringify(
     await inventoryUnitClient.cancelById('YOUR_INVENTORY_UNIT_ID', {
-      cancelReason: 'YOUR_CANCEL_REASON',
+      cancelReason: 'YOUR_REASON_FOR_CANCELLATION',
     })
   )
 );
@@ -47,7 +47,7 @@ console.log(
 console.log(
   JSON.stringify(
     await inventoryUnitClient.exchangeById('YOUR_INVENTORY_UNIT_ID', {
-      exchangeReason: 'YOUR_EXCHANGE_REASON',
+      exchangeReason: 'YOUR_REASON_FOR_EXCHANGE',
     })
   )
 );
@@ -55,7 +55,7 @@ console.log(
 console.log(
   JSON.stringify(
     await inventoryUnitClient.returnById('YOUR_INVENTORY_UNIT_ID', {
-      returnReason: 'YOUR_RETURN_REASON',
+      returnReason: 'YOUR_REASON_FOR_RETURN',
     })
   )
 );
