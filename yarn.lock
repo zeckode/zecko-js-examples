@@ -5613,9 +5613,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zecko@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/zecko/-/zecko-0.0.7.tgz#dcbb282b59f1cd52bb9aa820930e39cd4e73ea78"
-  integrity sha512-forhdFScVB5AITs548yDwC2zJAG/KZfuA2qQkQSKyBdNCdF06AxJP19wcdbJkWtwop+fjLkSEgB/h+/ZgbXi5w==
+zecko@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/zecko/-/zecko-0.0.8.tgz#e43cebe1d1628cc05a217b336e2814e40c78989f"
+  integrity sha512-ch85bRXTq2R1XPr/laDZ/5mVGi8dpCib6tT8toYkFDttwuYwWhkuYRjJ9b+Sk1VfFt8blGk3YNycAYz3xmdUPw==
   dependencies:
     axios "^0.27.2"
