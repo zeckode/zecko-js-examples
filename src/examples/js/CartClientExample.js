@@ -73,12 +73,6 @@ console.log(
       customer: {
         email: 'YOUR_CUSTOMER_EMAIL_ADDRESS',
       },
-      // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
-      paymentMethod: 'YOUR_PAYMENT_METHOD',
-      discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
-      paymentInfo: {
-        totalPrice: 'TOTAL_PRICE_OF_YOUR_CART',
-      },
       shippingAddress: {
         address1: 'YOUR_CUSTOMER_ADDRESS', // For Street address or PO Box number
         address2: 'YOUR_CUSTOMER_ADDRESS', // Optional Field, For Apartment Details
@@ -89,6 +83,12 @@ console.log(
         lastName: 'YOUR_CUSTOMER_LAST_NAME', // Optional Field
         phone: 'YOUR_CUSTOMER_PHONE_NUMBER',
         zip: 'YOUR_CUSTOMER_ZIP_CODE',
+      },
+      // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
+      paymentMethod: 'YOUR_PAYMENT_METHOD',
+      discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
+      paymentInfo: {
+        totalPrice: 'TOTAL_PRICE_OF_YOUR_CART',
       },
     })
   )
