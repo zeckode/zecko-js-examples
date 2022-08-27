@@ -84,8 +84,7 @@ console.log(
         phone: 'YOUR_CUSTOMER_PHONE_NUMBER',
         zip: 'YOUR_CUSTOMER_ZIP_CODE',
       },
-      // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
-      paymentMethod: 'YOUR_PAYMENT_METHOD',
+      paymentMethod: 'YOUR_PAYMENT_METHOD', // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
       discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
       paymentInfo: {
         totalPrice: 'TOTAL_PRICE_OF_YOUR_CART',
