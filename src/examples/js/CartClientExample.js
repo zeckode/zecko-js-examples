@@ -24,6 +24,21 @@ class CartClientExample {
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
+  updateCart = (id, cartUpdateRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.updateCart(id, cartUpdateRequest);
+  };
+
+  addDiscount = (id, cartDiscountRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.addDiscount(id, cartDiscountRequest);
+  };
+
+  removeDiscount = (id, cartDiscountRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.removeDiscount(id, cartDiscountRequest);
+  };
+
   completeCartById = (id, cartCompleteRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.completeCartById(id, cartCompleteRequest);
@@ -69,7 +84,7 @@ console.log('\n');
 
 console.log(
   JSON.stringify(
-    await cartClientExample.completeCartById('YOUR_CART_ID', {
+    await cartClientExample.updateCart('YOUR_CART_ID', {
       customer: {
         email: 'YOUR_CUSTOMER_EMAIL_ADDRESS',
       },
@@ -84,8 +99,21 @@ console.log(
         phone: 'YOUR_CUSTOMER_PHONE_NUMBER',
         zip: 'YOUR_CUSTOMER_ZIP_CODE',
       },
-      paymentMethod: 'YOUR_PAYMENT_METHOD', // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
-      discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
+      shippingLine: {
+        price: 'PRICE_OF_SHIPPING_RATE',
+        shippingRateHandle: 'UNIQUE_HANDLE_FOR_SHIPPING_RATE',
+        title: 'TITLE_OF_SHIPPING_RATE',
+      },
+    })
+  )
+);
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.completeCartById('YOUR_CART_ID', {
+      payment: {
+        totalPrice: 'TOTAL_AMOUNT_OF_CART', // that's include subTotal, Discount and Shipping
+      },
     })
   )
 );
