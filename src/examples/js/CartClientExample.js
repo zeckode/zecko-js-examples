@@ -24,19 +24,19 @@ class CartClientExample {
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
-  updateCart = (id, cartUpdateRequest) => {
+  updateById = (id, cartUpdateRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.updateCart(id, cartUpdateRequest);
+    return zecko.cartClient.updateById(id, cartUpdateRequest);
   };
 
-  addDiscount = (id, cartDiscountRequest) => {
+  addDiscountById = (id, cartDiscountRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.addDiscount(id, cartDiscountRequest);
+    return zecko.cartClient.addDiscountById(id, cartDiscountRequest);
   };
 
-  removeDiscount = (id, cartDiscountRequest) => {
+  removeDiscountById = (id, cartDiscountRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
-    return zecko.cartClient.removeDiscount(id, cartDiscountRequest);
+    return zecko.cartClient.removeDiscountById(id, cartDiscountRequest);
   };
 
   completeCartById = (id, cartCompleteRequest) => {
@@ -84,7 +84,7 @@ console.log('\n');
 
 console.log(
   JSON.stringify(
-    await cartClientExample.updateCart('YOUR_CART_ID', {
+    await cartClientExample.updateById('YOUR_CART_ID', {
       customer: {
         email: 'YOUR_CUSTOMER_EMAIL_ADDRESS',
       },
@@ -107,6 +107,38 @@ console.log(
     })
   )
 );
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.addDiscountById('YOUR_CART_ID', {
+      discounts: [
+        {
+          type: 'DISCOUNT_CODE_TYPE',
+          code: 'DISCOUNT_CODE',
+        },
+      ],
+    })
+  )
+);
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.removeDiscountById('YOUR_CART_ID', {
+      discounts: [
+        {
+          type: 'DISCOUNT_CODE_TYPE',
+          code: 'DISCOUNT_CODE',
+        },
+      ],
+    })
+  )
+);
+
+console.log('\n');
 
 console.log(
   JSON.stringify(
