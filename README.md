@@ -32,7 +32,7 @@ return zecko.cartClient.deleteFromCart({
 - Used to update the contact information (`customer.email`, `shippingAddress`, `shippingLine` - Shipping rate and method)
 
 
-First, update the customer's address to get available shipping rates (prepaid / COD, etc). After updating `shippingAddress` you will get multiple `availableShippingRates` which you can send to `cartClient.updateById` again to update shipping rates as selected by the user.
+First, update the customer's address to get available shipping rates (prepaid / COD, etc). After updating `shippingAddress` you will get multiple `availableShippingRates`, one of which you can send to `cartClient.updateById` again to update shipping rates as selected by the user.
 
 ```js
 return zecko.cartClient.updateById('YOUR_CART_ID', {
@@ -71,7 +71,17 @@ return zecko.cartClient.updateById('YOUR_CART_ID', {
 
 ### 4. <b>Add Discount to Cart </b>
 
+<<<<<<< HEAD
 - Used to add a discount code to the cart
+=======
+- If you already know or you cached shippingLine then you can also pass all 3 object at one time
+
+- After Changing the `shippingAddress` or `addToCart` or `deleteFromCart` shippingLine will be remove, So you have to pick the shippingLine from `availableShippingRates` and update that again
+
+### 4. <b>Add Cart Discount</b>
+
+- Used to add Discount on the Cart
+>>>>>>> 1f66eba1cf884c9e05cd8be711f86f860bcffb9e
 
 ```js
 return zecko.cartClient.addDiscountById('YOUR_CART_ID', {
