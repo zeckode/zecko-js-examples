@@ -68,20 +68,14 @@ return zecko.cartClient.updateById('YOUR_CART_ID', {
 });
 ```
 
+## 🗒️ Note
+
+After changing a cart's `shippingAddress` or calling the `addToCart` or `deleteFromCart` methods, shippingLine will be removed. When items or address is changed in a cart, a shipping line update is required again. So you will have to show `availableShippingLines` to the user again and make them select one of the available shipping lines, post which you can call update cart again to update the `shippingLine` for the cart.
+
 
 ### 4. <b>Add Discount to Cart </b>
 
-<<<<<<< HEAD
 - Used to add a discount code to the cart
-=======
-- If you already know or you cached shippingLine then you can also pass all 3 object at one time
-
-- After Changing the `shippingAddress` or `addToCart` or `deleteFromCart` shippingLine will be remove, So you have to pick the shippingLine from `availableShippingRates` and update that again
-
-### 4. <b>Add Cart Discount</b>
-
-- Used to add Discount on the Cart
->>>>>>> 1f66eba1cf884c9e05cd8be711f86f860bcffb9e
 
 ```js
 return zecko.cartClient.addDiscountById('YOUR_CART_ID', {
