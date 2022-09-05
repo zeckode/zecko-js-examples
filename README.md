@@ -2,13 +2,6 @@
 
 ## Cart Client Flow
 
----
-
-### Note 🗒️
-
-- After updating `shippingAddress` you will get multiple `availableShippingRates` according that shipping address in Cart Response and that one the shippingLine you will use to update the cart shippingLine
-
----
 
 ### 1. <b>Add to cart</b>
 
@@ -22,9 +15,9 @@ return zecko.cartClient.addToCart({
 });
 ```
 
-### 2. <b>delete From cart</b>
+### 2. <b>Delete From cart</b>
 
-- Used to remove product variant to cart
+- Used to remove product variant from cart
 
 ```js
 return zecko.cartClient.deleteFromCart({
@@ -36,7 +29,10 @@ return zecko.cartClient.deleteFromCart({
 
 ### 3. <b>Update Cart</b>
 
-- Used to update Contact information (Customer email), ShippingAddress, ShippingLine (Shipping method)
+- Used to update the contact information (`customer.email`, `shippingAddress`, `shippingLine` - Shipping rate and method)
+
+
+First, update the customer's address to get available shipping rates (prepaid / COD, etc). After updating `shippingAddress` you will get multiple `availableShippingRates` which you can send to `cartClient.updateById` again to update shipping rates as selected by the user.
 
 ```js
 return zecko.cartClient.updateById('YOUR_CART_ID', {
@@ -54,7 +50,14 @@ return zecko.cartClient.updateById('YOUR_CART_ID', {
     phone: 'YOUR_CUSTOMER_PHONE_NUMBER',
     province: 'REGION_OF_ADDRESS', // State or district, country
     zip: 'YOUR_CUSTOMER_ZIP_CODE',
-  },
+  }
+});
+```
+
+After updating the address, update the shipping line:
+
+```js
+return zecko.cartClient.updateById('YOUR_CART_ID', {
   shippingLine: {
     handle: 'UNIQUE_HANDLE_FOR_SHIPPING_RATE',
     price: {
@@ -65,17 +68,10 @@ return zecko.cartClient.updateById('YOUR_CART_ID', {
 });
 ```
 
-### 🗒️ Note
 
-- At least one of 'Customer', 'shippingAddress' or 'shippingLine' is necessary
+### 4. <b>Add Discount to Cart </b>
 
-- If you don't know the `shippingLine` then you will find out in `availableShippingRates` that you will get in Cart Response after updating `shippingAddress`
-
-- If you already know or you cached shippingLine then you can also pass all 3 object at one time
-
-### 4. <b>Add Cart Discount</b>
-
-- Used to add Discount on the Cart
+- Used to add a discount code to the cart
 
 ```js
 return zecko.cartClient.addDiscountById('YOUR_CART_ID', {
@@ -88,13 +84,9 @@ return zecko.cartClient.addDiscountById('YOUR_CART_ID', {
 });
 ```
 
-### 🗒️ Note
+### 5. <b>Remove Discount from Cart</b>
 
-- Discount applied on totalPrice, Product level discount is not available
-
-### 5. <b>Remove Cart Discount</b>
-
-- Used to remove Discount on the Cart
+- Used to remove a discount code from the cart.
 
 ```js
 return zecko.cartClient.removeDiscountById('YOUR_CART_ID', {
@@ -109,7 +101,7 @@ return zecko.cartClient.removeDiscountById('YOUR_CART_ID', {
 
 ### 6. <b> Complete Cart </b>
 
-- Used to complete the Cart
+- Used to complete the cart.
 
 ```js
 return zecko.cartClient.completeCartById('YOUR_CART_ID', {
@@ -121,12 +113,12 @@ return zecko.cartClient.completeCartById('YOUR_CART_ID', {
 
 ## 🗒️ Note
 
-- You have to pass exact `totalPrice` that you will get in cart response at the end
-  - That's include subTotal, Discount(if applicable) and Shipping
+- You have to pass the exact `totalPrice` that you will get in cart response from either `getCart` or in response of `updateCart` method after updating shipping rates (`shippingLines`)
+  - That includes subTotal, discount(if applicable) and shipping. This is to verify if the payment taken from the user is equal to what the cart reflects before completion.
 
 ### 4. <b>delete cart</b>
 
-- Used to delete customer cart
+- Used to delete customer cart.
 
 ```js
 return zecko.cartClient.deleteCartByCustomerId('YOUR_CUSTOMER_ID');
