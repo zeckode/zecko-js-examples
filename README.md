@@ -73,6 +73,8 @@ return zecko.cartClient.updateById('YOUR_CART_ID', {
 
 - If you already know or you cached shippingLine then you can also pass all 3 object at one time
 
+- After Changing the `shippingAddress` or `addToCart` or `deleteFromCart` shippingLine will be remove, So you have to pick the shippingLine from `availableShippingRates` and update that again
+
 ### 4. <b>Add Cart Discount</b>
 
 - Used to add Discount on the Cart
