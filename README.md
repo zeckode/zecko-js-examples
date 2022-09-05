@@ -6,7 +6,7 @@
 
 ### Note 🗒️
 
-- After updating `shippingAddress` you will get multiple `availableShippingRates` according that shipping address in Cart Response and that one the shippingLine you will use to update the cart shippingLine
+- After updating `shippingAddress` you will get multiple `availableShippingRates` according that shipping address in Cart Response and that one of the shippingLine you will have use to while updating cart
 
 ---
 
