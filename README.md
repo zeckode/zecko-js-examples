@@ -65,7 +65,6 @@ After updating the address, update the shipping line:
 ```js
 return zecko.cartClient.updateById('YOUR_CART_ID', {
   shippingLine: {
-    handle: 'UNIQUE_HANDLE_FOR_SHIPPING_RATE',
     price: {
       amount: 'PRICE_OF_SHIPPING_RATE';
     },
