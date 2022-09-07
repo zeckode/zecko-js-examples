@@ -101,7 +101,6 @@ console.log(
         zip: 'YOUR_CUSTOMER_ZIP_CODE',
       },
       shippingLine: {
-        handle: 'UNIQUE_HANDLE_FOR_SHIPPING_RATE',
         price: {
           amount: 'PRICE_OF_SHIPPING_RATE',
         },
