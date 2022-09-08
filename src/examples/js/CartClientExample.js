@@ -24,6 +24,21 @@ class CartClientExample {
     return zecko.cartClient.deleteFromCart(cartActionRequest);
   };
 
+  updateById = (id, cartUpdateRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.updateById(id, cartUpdateRequest);
+  };
+
+  addDiscountById = (id, cartDiscountRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.addDiscountById(id, cartDiscountRequest);
+  };
+
+  removeDiscountById = (id, cartDiscountRequest) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.cartClient.removeDiscountById(id, cartDiscountRequest);
+  };
+
   completeCartById = (id, cartCompleteRequest) => {
     const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
     return zecko.cartClient.completeCartById(id, cartCompleteRequest);
@@ -69,7 +84,7 @@ console.log('\n');
 
 console.log(
   JSON.stringify(
-    await cartClientExample.completeCartById('YOUR_CART_ID', {
+    await cartClientExample.updateById('YOUR_CART_ID', {
       customer: {
         email: 'YOUR_CUSTOMER_EMAIL_ADDRESS',
       },
@@ -82,10 +97,57 @@ console.log(
         firstName: 'YOUR_CUSTOMER_FIRST_NAME',
         lastName: 'YOUR_CUSTOMER_LAST_NAME', // Optional Field
         phone: 'YOUR_CUSTOMER_PHONE_NUMBER',
+        province: 'REGION_OF_ADDRESS', // State or district, country
         zip: 'YOUR_CUSTOMER_ZIP_CODE',
       },
-      paymentMethod: 'YOUR_PAYMENT_METHOD', // YOUR_PAYMENT_METHOD can be one of COD or PREPAID
-      discountCode: 'YOUR_DISCOUNT_COUPON_CODE',
+      shippingLine: {
+        price: {
+          amount: 'PRICE_OF_SHIPPING_RATE',
+        },
+        title: 'TITLE_OF_SHIPPING_RATE',
+      },
+    })
+  )
+);
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.addDiscountById('YOUR_CART_ID', {
+      discounts: [
+        {
+          type: 'DISCOUNT_CODE_TYPE',
+          code: 'DISCOUNT_CODE',
+        },
+      ],
+    })
+  )
+);
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.removeDiscountById('YOUR_CART_ID', {
+      discounts: [
+        {
+          type: 'DISCOUNT_CODE_TYPE',
+          code: 'DISCOUNT_CODE',
+        },
+      ],
+    })
+  )
+);
+
+console.log('\n');
+
+console.log(
+  JSON.stringify(
+    await cartClientExample.completeCartById('YOUR_CART_ID', {
+      payment: {
+        totalPrice: 'TOTAL_AMOUNT_OF_CART', // that's include subTotal, Discount and Shipping
+      },
     })
   )
 );
