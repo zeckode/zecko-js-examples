@@ -1,15 +1,15 @@
-import { Zecko } from 'zecko';
+import { CollectionData, CollectionsData, Zecko } from 'zecko';
 
 // eslint-disable-next-line functional/no-class
 class CollectionClientExample {
-  getById(id: string) {
+  getById(id: string): Promise<CollectionData> {
     const zecko = new Zecko({
       accessToken: 'YOUR_ACCESS_TOKEN',
     });
     return zecko.collectionClient.getById(id);
   }
 
-  readonly getAll = (before = null, after = null): array => {
+  readonly getAll = (before = null, after = null): Promise<CollectionsData> => {
     const zecko = new Zecko({
       accessToken: 'YOUR_ACCESS_TOKEN',
     });
