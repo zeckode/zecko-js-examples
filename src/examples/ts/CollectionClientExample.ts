@@ -9,7 +9,7 @@ class CollectionClientExample {
     return zecko.collectionClient.getById(id);
   }
 
-  readonly getAll = (before = null, after = null): Promise<CollectionsData> => {
+  readonly getAll = (before?: string, after?: string): Promise<CollectionsData> => {
     const zecko = new Zecko({
       accessToken: 'YOUR_ACCESS_TOKEN',
     });
