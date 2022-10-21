@@ -105,6 +105,6 @@
     ]
   },
   "dependencies": {
-    "zecko": "^0.0.10"
+    "zecko": "0.0.12"
   }
 }
