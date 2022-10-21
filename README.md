@@ -131,3 +131,9 @@ return zecko.cartClient.completeCartById('YOUR_CART_ID', {
 ```js
 return zecko.cartClient.deleteCartByCustomerId('YOUR_CUSTOMER_ID');
 ```
+
+## For Developers
+
+- always update the latest version of ```Zecko``` module in ```package.json``` before installation
+- get the latest version [from here](https://www.npmjs.com/package/zecko)
+
