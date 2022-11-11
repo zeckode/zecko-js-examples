@@ -2,7 +2,7 @@ import { Zecko } from 'zecko';
 
 class ProductClientExample {
   getAllByCollectionId = (collectionId, before = null, after = null) => {
-    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    const zecko = new Zecko({ accessToken: 'abc' });
     return zecko.productClient.getAllByCollectionId(
       collectionId,
       before,
@@ -19,7 +19,7 @@ class ProductClientExample {
     metaFieldsBefore = null,
     metaFieldsAfter = null
   ) => {
-    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    const zecko = new Zecko({ accessToken: 'abc' });
     return zecko.productClient.getById(
       id,
       imagesBefore,
@@ -30,16 +30,25 @@ class ProductClientExample {
       metaFieldsAfter
     );
   };
+
+  getRealTimeData = (id) => {
+    const zecko = new Zecko({ accessToken: 'abc' });
+    return zecko.productClient.getRealtimeData(id);
+  };
 }
 
 const productClientExample = new ProductClientExample();
 
 console.log(
   JSON.stringify(
-    await productClientExample.getAllByCollectionId('YOUR_COLLECTION_ID')
+    await productClientExample.getAllByCollectionId('266950639667')
   )
 );
 console.log('\n');
 console.log(
-  JSON.stringify(await productClientExample.getById('YOUR_PRODUCT_ID'))
+  JSON.stringify(await productClientExample.getById('6764732776499'))
+);
+console.log('\n');
+console.log(
+  JSON.stringify(await productClientExample.getRealTimeData('6764732776499'))
 );
