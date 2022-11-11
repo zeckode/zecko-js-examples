@@ -11,6 +11,11 @@ class ProductClientExample {
         const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
         return zecko.productClient.getById(id, imagesBefore, imagesAfter, variantsBefore, variantsAfter, metaFieldsBefore, metaFieldsAfter);
     };
+
+    readonly getRealtimeData = (id: string): Promise<ProductData> => {
+        const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+        return zecko.productClient.getRealtimeData(id);
+    };
 }
 
 const main = async () => {
@@ -24,6 +29,10 @@ const main = async () => {
     console.log('\n');
     console.log(
         JSON.stringify(await productClientExample.getById('YOUR_PRODUCT_ID'))
+    );
+    console.log('\n');
+    console.log(
+        JSON.stringify(await productClientExample.getRealtimeData('YOUR_PRODUCT_ID'))
     );
 };
 
