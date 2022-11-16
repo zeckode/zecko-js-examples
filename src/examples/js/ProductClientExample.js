@@ -30,6 +30,11 @@ class ProductClientExample {
       metaFieldsAfter
     );
   };
+
+  getRealTimeData = (id) => {
+    const zecko = new Zecko({ accessToken: 'YOUR_ACCESS_TOKEN' });
+    return zecko.productClient.getRealtimeData(id);
+  };
 }
 
 const productClientExample = new ProductClientExample();
@@ -42,4 +47,8 @@ console.log(
 console.log('\n');
 console.log(
   JSON.stringify(await productClientExample.getById('YOUR_PRODUCT_ID'))
+);
+console.log('\n');
+console.log(
+  JSON.stringify(await productClientExample.getRealTimeData('YOUR_PRODUCT_ID'))
 );
